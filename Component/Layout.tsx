@@ -3,10 +3,10 @@ import Footer from "./Footer";
 
 const Layout = ({children}) => {
     return(
-        <div>
+        <div >
             <Navbar/>
             {children}
-            <Footer/>
+            <Footer />
         </div>
     )
 }
