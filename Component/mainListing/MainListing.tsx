@@ -1,22 +1,23 @@
-import useFetch from "../useFetch";
-import ImageListing from "./ImageListing";
-import Skeleton from "../Skeleton";
+
 import momentJalali from "../../momentJalali";
 import {HiLocationMarker, HiOutlineBookmark} from "react-icons/hi";
+import {ListingData} from "../../pages/Listing";
 
+interface Props {
+    data: ListingData
+}
 
-const MainListing = () => {
-    const {data, isPending} = useFetch()
+const MainListing = (props : Props) => {
+    console.log('props: ',props)
     return (
 
         <div className="md:w-full md:w-72">
-            <Skeleton/>
-            {data.map((item) => (
+            {props.data.content.map((item) => (
                 <div
                     className="flex flex-col h-80 mb-5 p-2 border border-gray-200 drop-shadow-md hover:drop-shadow-xl md:flex-row  hover:bg-gray-50 hover:shadow-xl w-full md:w-full md:max-w-xl"
                     key={item.identifier}>
                     <div>
-                        <img  className="md:w-48 ml-3" src={item.media.imageUrls[0]}/>
+                        <img  className="md:w-56 ml-3" src={item.media.imageUrls[0]}/>
                         <p className="text-xs mt-6 font-normal font-bold text-right text-gray-600 dark:text-gray-400 w-60">
                             {momentJalali(new Date(item.searchDate)).fromNow()}
                         </p>
